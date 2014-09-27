@@ -12,6 +12,10 @@ class window.Hand extends Backbone.Collection
     ## this method works, now just need to implement them
     ## tell the model it is the dealers turn
 
+  busted: ->
+
+    ##(@at 0).flip()
+
   revealHand: ->
     console.log @at 0
     console.log "revealHand in hand.coffee before flip"
