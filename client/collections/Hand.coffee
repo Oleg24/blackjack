@@ -7,6 +7,17 @@ class window.Hand extends Backbone.Collection
   hit: ->
     @add(@deck.pop()).last()
 
+  stand: ->
+    console.log "player stood"
+    ## this method works, now just need to implement them
+    ## tell the model it is the dealers turn
+
+  revealHand: ->
+    console.log @at 0
+    console.log "revealHand in hand.coffee before flip"
+    (@at 0).flip()
+    console.log @at 0
+
   scores: ->
     # The scores are an array of potential scores.
     # Usually, that array contains one element. That is the only score.

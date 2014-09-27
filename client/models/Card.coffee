@@ -1,6 +1,12 @@
 class window.Card extends Backbone.Model
 
   initialize: (params) ->
+   ## @.get('revealHand').on 'revealHand' ->
+   ##   console.log "hello"
+    ##on 'revealHand', ->
+      ##  console.log "helloo"
+
+
     @set
       revealed: true
       value: if !params.rank or 10 < params.rank then 10 else params.rank
@@ -14,4 +20,7 @@ class window.Card extends Backbone.Model
 
   flip: ->
     @set 'revealed', !@get 'revealed'
-    @
+
+  revealHand: ->
+    console.log "hand is being revealed"
+
