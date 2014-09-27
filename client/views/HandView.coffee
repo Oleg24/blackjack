@@ -11,6 +11,7 @@ class window.HandView extends Backbone.View
       @render()
       if @collection.scores() > 21
         @trigger 'revealHand'
+        @$el.append "Sorry you busted!"
         console.log "you busted!"
     @collection.on 'change', =>
       @render()
