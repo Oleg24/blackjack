@@ -13,7 +13,10 @@ class window.AppView extends Backbone.View
   events:
     "click .hit-button": -> @model.get('playerHand').hit()
     "click .stand-button": -> @playerStand(true)
-    "click .redeal-button": -> @model.get('dealerHand').revealHand()
+    "click .redeal-button": ->
+      @model.redeal()
+      @initialize()
+      @render()
 
   playerStand: (dealerShouldPlay) ->
     player = @model.get 'playerHand'
@@ -25,8 +28,6 @@ class window.AppView extends Backbone.View
       dealer.hit() while dealer.scores()[0] < 17 and dealer.scores()[1] > 21 if dealerShouldPlay
     else
       dealer.hit() while dealer.scores()[0] < 17 if dealerShouldPlay
-
-
     @calcWinner()
 
   initialize: ->
@@ -36,6 +37,7 @@ class window.AppView extends Backbone.View
     that = @
     @$('.gameText').html "Blackjack!" if player.scores()[1] == 21
     player.on 'add', ->
+      console.log "player busted" if player.scores()[0] > 21
       that.playerStand(false) if player.scores()[0] > 21
       ##@calcWinner() if player.scores()[0] > 21
 
